@@ -5,10 +5,12 @@ public class ItemControl : MonoBehaviour
     public int coins; // Number of coins collected
     public int health; // Health of the player
     public int maxHealth = 100; // Maximum health of the player
+    AudioSource audioSource; // AudioSource to play sound effects
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        audioSource = GetComponent<AudioSource>();
         
     }
 
@@ -19,7 +21,7 @@ public class ItemControl : MonoBehaviour
         if (collision)
         {
             coins ++; // Increment coins when colliding with a coin item
-
+            audioSource.Play(); // Play the coin collection sound
             Destroy(collision.gameObject); // Destroy the coin item after collecting it
         }
 
